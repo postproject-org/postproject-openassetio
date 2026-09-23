@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          repository: eseifert/postproject-openassetio-manager-spike
       - uses: actions/checkout@v7
         with:
           repository: eseifert/postproject
@@ -27,4 +29,3 @@ jobs:
       - run: pytest -W error
         env:
           POSTPROJECT_LIBRARY: ${{ github.workspace }}/postproject/target/release/libpostproject.so
-
