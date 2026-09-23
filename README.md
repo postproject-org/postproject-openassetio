@@ -1,7 +1,6 @@
-# Disposable PostProject OpenAssetIO Manager spike
+# PostProject OpenAssetIO integration validation
 
-This experiment asks one question: can a discoverable OpenAssetIO Manager turn
+This focused integration asks one question: can a discoverable OpenAssetIO Manager turn
 a PostProject representation reference into a `LocatableContent` URI without
-leaking database or FFI details? It deliberately implements only read
-resolution and is not a supported integration.
-
+leaking database or FFI details? It implements only read resolution; the
+maintained Manager lives in `postproject-openassetio-manager`.
