@@ -6,6 +6,11 @@ on:
   schedule:
     - cron: "7 3 * * 1"
   workflow_call:
+    inputs:
+      postproject_ref:
+        required: false
+        type: string
+        default: main
 
 jobs:
   test:
@@ -17,7 +22,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           repository: eseifert/postproject
-          ref: main
+          ref: ${{ inputs.postproject_ref || 'main' }}
           path: postproject
       - uses: actions/setup-python@v6
         with:
