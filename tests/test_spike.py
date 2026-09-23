@@ -12,10 +12,10 @@ Location = LocatableContentTrait_v1
 
 class Host(HostInterface):
     def identifier(self):
-        return "org.postproject.spike-host"
+        return "org.postproject.validation-host"
 
     def displayName(self):
-        return "PostProject spike host"
+        return "PostProject validation host"
 
 
 def test_resolves_postproject_representation(tmp_path):
@@ -32,7 +32,7 @@ def test_resolves_postproject_representation(tmp_path):
     logger = ConsoleLogger()
     factory = PythonPluginSystemManagerImplementationFactory(logger)
     manager = ManagerFactory.createManagerForInterface(
-        "org.postproject.manager-spike", Host(), factory, logger
+        "org.postproject.manager-validation", Host(), factory, logger
     )
     manager.initialize(
         {"production_path": str(production_path), "library_path": library}
@@ -44,4 +44,3 @@ def test_resolves_postproject_representation(tmp_path):
         manager.createContext(),
     )
     assert Location(data).getLocation() == media.resolve().as_uri()
-

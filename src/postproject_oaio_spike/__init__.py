@@ -1,14 +1,14 @@
-"""OpenAssetIO discovery hook for the disposable Manager spike."""
+"""OpenAssetIO discovery hook for the Manager validation."""
 
 from openassetio.pluginSystem import PythonPluginSystemManagerPlugin
 
 
 class Plugin(PythonPluginSystemManagerPlugin):
-    """Create a fresh spike interface for each Manager instance."""
+    """Create a fresh validation interface for each Manager instance."""
 
     @staticmethod
     def identifier():
-        return "org.postproject.manager-spike"
+        return "org.postproject.manager-validation"
 
     @classmethod
     def interface(cls):
@@ -18,4 +18,3 @@ class Plugin(PythonPluginSystemManagerPlugin):
 
 
 openassetioPlugin = Plugin
-

@@ -22,10 +22,10 @@ class Interface(ManagerInterface):
         self.representations = {}
 
     def identifier(self):
-        return "org.postproject.manager-spike"
+        return "org.postproject.manager-validation"
 
     def displayName(self):
-        return "PostProject Manager spike"
+        return "PostProject Manager validation"
 
     def info(self):
         return {constants.kInfoKey_EntityReferencesMatchPrefix: PREFIX}
@@ -83,7 +83,7 @@ class Interface(ManagerInterface):
                     index,
                     BatchElementError(
                         BatchElementError.ErrorCode.kEntityAccessError,
-                        "the spike is read-only",
+                        "the validation Manager is read-only",
                     ),
                 )
 
@@ -100,7 +100,7 @@ class Interface(ManagerInterface):
         for index, reference in enumerate(entityReferences):
             try:
                 if resolveAccess != ResolveAccess.kRead:
-                    raise ValueError("the spike is read-only")
+                    raise ValueError("the validation Manager is read-only")
                 binding = self.production.host_bindings.parse(reference.toString())
                 if binding.production_id != self.production.id:
                     raise ValueError("reference belongs to another production")

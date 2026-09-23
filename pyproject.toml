@@ -1,5 +1,5 @@
 [project]
-name = "postproject-openassetio-manager-spike"
+name = "postproject-openassetio-validation"
 version = "0.0.0"
 requires-python = ">=3.11"
 dependencies = [
@@ -9,7 +9,7 @@ dependencies = [
 ]
 
 [project.entry-points."openassetio.manager_plugin"]
-postproject-spike = "postproject_oaio_spike"
+postproject-validation = "postproject_oaio_spike"
 
 [build-system]
 requires = ["setuptools>=77"]
@@ -20,4 +20,3 @@ where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-
