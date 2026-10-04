@@ -7,7 +7,7 @@ from openassetio.managerApi import ManagerInterface
 from openassetio.trait import TraitsData
 from openassetio_mediacreation.traits.content import LocatableContentTrait_v1
 from openassetio_mediacreation.traits.managementPolicy import ManagedTrait
-from postproject import Production, RepresentationId
+from postproject import Production, RepresentationRef
 
 PREFIX = "https://postproject.org/ref/v1/"
 Location = LocatableContentTrait_v1
@@ -104,9 +104,9 @@ class Interface(ManagerInterface):
                 binding = self.production.host_bindings.parse(reference.toString())
                 if binding.production_id != self.production.id:
                     raise ValueError("reference belongs to another production")
-                if not isinstance(binding.object, RepresentationId):
+                if not isinstance(binding.object, RepresentationRef):
                     raise ValueError("reference is not a representation")
-                representation = self.representations[str(binding.object)]
+                representation = self.representations[str(binding.object.id)]
                 resolution = next(
                     item
                     for item in self.production.resolve(representation.asset_id)

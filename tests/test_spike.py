@@ -5,7 +5,7 @@ from openassetio.hostApi import HostInterface, ManagerFactory
 from openassetio.log import ConsoleLogger
 from openassetio.pluginSystem import PythonPluginSystemManagerImplementationFactory
 from openassetio_mediacreation.traits.content import LocatableContentTrait_v1
-from postproject import Production
+from postproject import RepresentationRef, Production
 
 Location = LocatableContentTrait_v1
 
@@ -27,7 +27,7 @@ def test_resolves_postproject_representation(tmp_path):
         with production.transaction() as transaction:
             asset_id = transaction.import_media(media, "clip")
         representation = production.representations[asset_id][0]
-        reference = production.host_bindings[representation.id]
+        reference = production.host_bindings[RepresentationRef(representation.id)]
 
     logger = ConsoleLogger()
     factory = PythonPluginSystemManagerImplementationFactory(logger)
