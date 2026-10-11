@@ -38,11 +38,12 @@ class Interface(ManagerInterface):
             settings["production_path"],
             library_path=settings.get("library_path") or None,
         )
-        self.representations = {
-            str(representation.id): representation
-            for asset in self.production.assets
-            for representation in self.production.representations[asset.id]
-        }
+        with self.production.read_session() as view:
+            self.representations = {
+                str(representation.id): representation
+                for asset in view.assets()
+                for representation in self.production.representations[asset.id]
+            }
 
     def hasCapability(self, capability):
         return capability in (
