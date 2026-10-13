@@ -25,7 +25,7 @@ def test_resolves_postproject_representation(tmp_path):
     production_path = tmp_path / "show.pproj"
     with Production.create(production_path, library_path=library) as production:
         with production.edit() as transaction:
-            asset_id = transaction.import_media(media, "clip")
+            asset_id = transaction.import_media(media, "clip").asset_id
             transaction.commit()
         representation = production.representations[asset_id][0]
         reference = production.host_bindings[RepresentationRef(representation.id)]
